@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Meu Amor ❤️</title>
+    <!-- Inclui Tailwind CSS para um estilo fácil e responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração personalizada do Tailwind para usar a fonte Inter e algumas cores padrão -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'], // Define Inter como a fonte padrão
+                    },
+                    colors: {
+                        'rose-love': '#FF69B4', // Um rosa mais vivo para o amor
+                        'pink-light': '#FCDDEC', // Um rosa claro
+                        'purple-heart': '#8A2BE2', // Um roxo bonito
+                        'red-passion': '#DC143C', // Um vermelho mais forte
+                    },
+                    keyframes: {
+                        shake: {
+                            '0%, 100%': { transform: 'translateX(0)' },
+                            '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-5px)' },
+                            '20%, 40%, 60%, 80%': { transform: 'translateX(5px)' },
+                        }
+                    },
+                    animation: {
+                        shake: 'shake 0.5s ease-in-out', // Animação de "shake"
+                        'spin-slow': 'spin 3s linear infinite', // Animação de rotação mais lenta
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilos personalizados para o corpo da página e animações */
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to bottom right, #FCDDEC, #FFDAB9); /* Gradiente de fundo suave */
+            margin: 0;
+            overflow: hidden; /* Esconde corações fora da tela */
+        }
+
+        /* Animação de batimento cardíaco */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .heartbeat-animation {
+            animation: heartbeat 1.5s infinite; /* Aplica a animação */
+        }
+
+        /* Animação para os corações flutuantes */
+        @keyframes floatHeart {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 2rem;
+            color: #FF69B4; /* Cor rosa para os corações */
+            animation: floatHeart 10s ease-out forwards;
+            pointer-events: none; /* Garante que os corações não bloqueiem cliques */
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="selection:bg-rose-love selection:text-white">
+
+    <div class="relative min-h-screen w-full flex items-center justify-center p-4">
+        <!-- Container principal do cartão, centralizado e responsivo -->
+        <div class="relative bg-white bg-opacity-90 backdrop-blur-sm p-8 md:p-12 rounded-3xl shadow-xl max-w-xl w-full text-center border-4 border-rose-love transform transition-all duration-500 hover:scale-105">
+
+            <!-- Conteúdo inicial visível -->
+            <div id="initial-content" class="space-y-6">
+                <h1 class="text-4xl md:text-5xl font-bold text-red-passion mb-4 flex items-center justify-center gap-3 heartbeat-animation">
+                    Feliz Dia dos Namorados! <span class="text-rose-love text-5xl">❤️</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+                    Meu amor, este pequeno site é para você.
+                    Clique no botão abaixo para descobrir uma mensagem especial...
+                </p>
+                <button id="reveal-button" class="bg-rose-love text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-red-passion transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-rose-love focus:ring-opacity-50">
+                    Clique Aqui!
+                </button>
+            </div>
+
+            <!-- Nova área da pergunta (inicialmente oculta) -->
+            <div id="question-section" class="hidden space-y-8 opacity-0 transition-opacity duration-1000 ease-in-out">
+                <h2 class="text-3xl md:text-4xl font-bold text-purple-heart flex items-center justify-center gap-3">
+                    Tenho uma pergunta para você... <span class="text-rose-love text-4xl">🤔</span>
+                </h2>
+                <p class="text-2xl md:text-3xl text-gray-800 font-semibold leading-relaxed">
+                    Você aceita ser meu(minha) eterno(a) namorado(a)?
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
+                    <!-- Botão SIM -->
+                    <button id="yes-button" class="bg-green-600 text-white font-semibold py-3 px-10 rounded-full shadow-lg hover:bg-green-700 transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50">
+                        Sim!
+                    </button>
+                    <!-- Botão NÃO com sua própria div para posicionamento relativo do span de mensagem -->
+                    <div class="relative">
+                        <button id="no-button" class="bg-red-500 text-white font-semibold py-3 px-10 rounded-full shadow-lg hover:bg-red-600 transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-opacity-50">
+                            Não
+                        </button>
+                        <!-- Mensagem temporária para o botão "Não" -->
+                        <span id="no-message" class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-sm text-red-600 font-medium opacity-0 transition-opacity duration-300 whitespace-nowrap"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo da mensagem secreta (inicialmente oculta) - revelada após o "Sim" -->
+            <div id="secret-message" class="hidden space-y-6 opacity-0 transition-opacity duration-1000 ease-in-out">
+                <h2 class="text-3xl md:text-4xl font-bold text-purple-heart mb-4 flex items-center justify-center gap-3">
+                    Para o meu <span class="text-rose-love text-4xl">único e verdadeiro amor</span>...
+                </h2>
+                <p class="text-lg md:text-xl text-gray-800 leading-relaxed italic">
+                    "Desde o momento em que te conheci, meu mundo se transformou.
+                    Cada dia ao seu lado é um presente, e seu sorriso ilumina minha vida.
+                    Você é a pessoa mais incrível que já conheci,
+                    e sou grato(a) por cada momento que passamos juntos.
+                    Com todo o meu amor, hoje e sempre!"
+                </p>
+                <div class="text-2xl font-semibold text-red-passion mt-6">
+                    Com carinho, <br>
+                    Seu(Sua) Namorado(a)
+                </div>
+                <div class="flex justify-center gap-4 mt-6">
+                    <span class="text-5xl animate-bounce">💖</span>
+                    <span class="text-5xl animate-spin-slow">✨</span>
+                    <span class="text-5xl animate-pulse">🥰</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript para controlar a revelação das mensagens e a animação dos corações
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealButton = document.getElementById('reveal-button');
+            const initialContent = document.getElementById('initial-content');
+            const questionSection = document.getElementById('question-section');
+            const yesButton = document.getElementById('yes-button');
+            const noButton = document.getElementById('no-button');
+            const noMessage = document.getElementById('no-message');
+            const secretMessage = document.getElementById('secret-message');
+            const body = document.body;
+
+            // Função para gerar corações flutuantes
+            function createFloatingHeart() {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.innerHTML = '❤️'; // Ícone de coração
+                heart.style.left = `${Math.random() * 100}vw`; // Posição horizontal aleatória
+                heart.style.animationDuration = `${Math.random() * 5 + 5}s`; // Duração da animação aleatória
+                heart.style.opacity = '0'; // Começa invisível
+                body.appendChild(heart);
+
+                // Remove o coração após a animação para não acumular elementos
+                heart.addEventListener('animationend', () => {
+                    heart.remove();
+                });
+            }
+
+            // Variáveis para controlar a "teimosia" do botão "Não"
+            let noAttempts = 0;
+            const noMessages = [
+                "Ops! Essa não é a resposta certa...",
+                "Tente novamente! 😉",
+                "Essa é fácil... pense bem! ❤️",
+                "Não desista agora! 😇",
+                "A resposta certa está esperando! ✨"
+            ];
+
+            // Event listener para o botão "Clique Aqui!" (revela a pergunta)
+            revealButton.addEventListener('click', () => {
+                // Esconde o conteúdo inicial
+                initialContent.classList.add('hidden');
+                initialContent.classList.remove('opacity-100'); // Remove opacidade para transição
+
+                // Mostra a seção da pergunta
+                questionSection.classList.remove('hidden');
+                setTimeout(() => {
+                    questionSection.classList.add('opacity-100');
+                }, 10); // Pequeno atraso para garantir que a classe hidden seja removida antes da transição
+            });
+
+            // Event listener para o botão "Sim" (revela a mensagem secreta)
+            yesButton.addEventListener('click', () => {
+                // Esconde a seção da pergunta
+                questionSection.classList.add('hidden');
+                questionSection.classList.remove('opacity-100'); // Remove opacidade para transição
+
+                // Mostra a mensagem secreta
+                secretMessage.classList.remove('hidden');
+                setTimeout(() => {
+                    secretMessage.classList.add('opacity-100');
+                }, 10); // Pequeno atraso para garantir que a classe hidden seja removida antes da transição
+
+                // Começa a gerar corações após revelar a mensagem
+                let heartInterval = setInterval(createFloatingHeart, 300); // Gera um coração a cada 300ms
+
+                // Para de gerar corações após alguns segundos
+                setTimeout(() => {
+                    clearInterval(heartInterval);
+                }, 10000); // Gera corações por 10 segundos
+            });
+
+            // Event listener para o botão "Não" (teimoso!)
+            noButton.addEventListener('click', () => {
+                noAttempts++; // Incrementa o número de tentativas
+
+                // Adiciona uma animação de "shake" e a remove após a conclusão
+                noButton.classList.add('animate-shake');
+                noButton.addEventListener('animationend', () => {
+                    noButton.classList.remove('animate-shake');
+                }, { once: true }); // Garante que o listener seja removido após uma execução
+
+                // Exibe uma mensagem temporária
+                noMessage.textContent = noMessages[(noAttempts - 1) % noMessages.length];
+                noMessage.classList.add('opacity-100');
+                noMessage.classList.remove('opacity-0');
+
+                // Esconde a mensagem após um curto período
+                setTimeout(() => {
+                    noMessage.classList.remove('opacity-100');
+                    noMessage.classList.add('opacity-0');
+                }, 1500); // Mensagem visível por 1.5 segundos
+            });
+
+            // Efeito criativo adicional para o botão "Não" ao passar o mouse
+            noButton.addEventListener('mouseenter', () => {
+                if (noAttempts < 5) { // Só faz o truque nas primeiras tentativas
+                    // Altera a cor do texto do botão para "desencorajar"
+                    noButton.classList.remove('bg-red-500', 'hover:bg-red-600');
+                    noButton.classList.add('bg-gray-400', 'hover:bg-gray-500');
+                } else {
+                    // Após muitas tentativas, o botão "Não" fica ainda mais insistente
+                    noButton.textContent = "Sério? Ainda não?";
+                    noButton.classList.add('animate-pulse'); // Adiciona um efeito de pulso
+                }
+            });
+
+            noButton.addEventListener('mouseleave', () => {
+                // Restaura a cor original do botão
+                noButton.classList.remove('bg-gray-400', 'hover:bg-gray-500');
+                noButton.classList.add('bg-red-500', 'hover:bg-red-600');
+                noButton.classList.remove('animate-pulse');
+                noButton.textContent = "Não"; // Restaura o texto original
+            });
+        });
+    </script>
+</body>
+</html>
