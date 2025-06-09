@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para o Meu Amor ❤️</title>
+    <title>Para ELAAAA ❤️</title>
     <!-- Inclui Tailwind CSS para um estilo fácil e responsivo -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Configuração personalizada do Tailwind para usar a fonte Inter e algumas cores padrão -->
@@ -43,98 +44,132 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(to bottom right, #FCDDEC, #FFDAB9); /* Gradiente de fundo suave */
+            background: linear-gradient(to bottom right, #FCDDEC, #FFDAB9);
+            /* Gradiente de fundo suave */
             margin: 0;
-            overflow: hidden; /* Esconde corações fora da tela */
+            overflow: hidden;
+            /* Esconde corações fora da tela */
         }
 
         /* Animação de batimento cardíaco */
         @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .heartbeat-animation {
-            animation: heartbeat 1.5s infinite; /* Aplica a animação */
+            animation: heartbeat 1.5s infinite;
+            /* Aplica a animação */
         }
 
         /* Animação para os corações flutuantes */
         @keyframes floatHeart {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            20% { opacity: 1; }
-            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
         }
 
         .floating-heart {
             position: absolute;
             font-size: 2rem;
-            color: #FF69B4; /* Cor rosa para os corações */
+            color: #FF69B4;
+            /* Cor rosa para os corações */
             animation: floatHeart 10s ease-out forwards;
-            pointer-events: none; /* Garante que os corações não bloqueiem cliques */
+            pointer-events: none;
+            /* Garante que os corações não bloqueiem cliques */
             z-index: 10;
         }
     </style>
 </head>
+
 <body class="selection:bg-rose-love selection:text-white">
 
     <div class="relative min-h-screen w-full flex items-center justify-center p-4">
         <!-- Container principal do cartão, centralizado e responsivo -->
-        <div class="relative bg-white bg-opacity-90 backdrop-blur-sm p-8 md:p-12 rounded-3xl shadow-xl max-w-xl w-full text-center border-4 border-rose-love transform transition-all duration-500 hover:scale-105">
+        <div
+            class="relative bg-white bg-opacity-90 backdrop-blur-sm p-8 md:p-12 rounded-3xl shadow-xl max-w-xl w-full text-center border-4 border-rose-love transform transition-all duration-500 hover:scale-105">
 
             <!-- Conteúdo inicial visível -->
             <div id="initial-content" class="space-y-6">
-                <h1 class="text-4xl md:text-5xl font-bold text-red-passion mb-4 flex items-center justify-center gap-3 heartbeat-animation">
-                    Feliz Dia dos Namorados! <span class="text-rose-love text-5xl">❤️</span>
+                <h1
+                    class="text-4xl md:text-5xl font-bold text-red-passion mb-4 flex items-center justify-center gap-3 heartbeat-animation">
+                    FELIZ DIA DOS NAMORADOS! <span class="text-rose-love text-5xl">❤️</span>
                 </h1>
                 <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-                    Meu amor, este pequeno site é para você.
-                    Clique no botão abaixo para descobrir uma mensagem especial...
+                    Princesinha, fiz esse site pra tu.
+                    Clica nesse botao ai que tu vai ver o resto rsrs...
                 </p>
-                <button id="reveal-button" class="bg-rose-love text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-red-passion transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-rose-love focus:ring-opacity-50">
-                    Clique Aqui!
+                <button id="reveal-button"
+                    class="bg-rose-love text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-red-passion transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-rose-love focus:ring-opacity-50">
+                    Clica aqui!
                 </button>
             </div>
 
             <!-- Nova área da pergunta (inicialmente oculta) -->
             <div id="question-section" class="hidden space-y-8 opacity-0 transition-opacity duration-1000 ease-in-out">
                 <h2 class="text-3xl md:text-4xl font-bold text-purple-heart flex items-center justify-center gap-3">
-                    Tenho uma pergunta para você... <span class="text-rose-love text-4xl">🤔</span>
+                    Tenho uma pergunta para ti... <span class="text-rose-love text-4xl">🤔</span>
                 </h2>
                 <p class="text-2xl md:text-3xl text-gray-800 font-semibold leading-relaxed">
-                    Você aceita ser meu(minha) eterno(a) namorado(a)?
+                    Você aceita ficar comigo pra sempre?
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
                     <!-- Botão SIM -->
-                    <button id="yes-button" class="bg-green-600 text-white font-semibold py-3 px-10 rounded-full shadow-lg hover:bg-green-700 transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50">
+                    <button id="yes-button"
+                        class="bg-green-600 text-white font-semibold py-3 px-10 rounded-full shadow-lg hover:bg-green-700 transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50">
                         Sim!
                     </button>
                     <!-- Botão NÃO com sua própria div para posicionamento relativo do span de mensagem -->
                     <div class="relative">
-                        <button id="no-button" class="bg-red-500 text-white font-semibold py-3 px-10 rounded-full shadow-lg hover:bg-red-600 transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-opacity-50">
+                        <button id="no-button"
+                            class="bg-red-500 text-white font-semibold py-3 px-10 rounded-full shadow-lg hover:bg-red-600 transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-red-400 focus:ring-opacity-50">
                             Não
                         </button>
                         <!-- Mensagem temporária para o botão "Não" -->
-                        <span id="no-message" class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-sm text-red-600 font-medium opacity-0 transition-opacity duration-300 whitespace-nowrap"></span>
+                        <span id="no-message"
+                            class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-sm text-red-600 font-medium opacity-0 transition-opacity duration-300 whitespace-nowrap"></span>
                     </div>
                 </div>
             </div>
 
             <!-- Conteúdo da mensagem secreta (inicialmente oculta) - revelada após o "Sim" -->
-            <div id="secret-message" class="hidden space-y-6 opacity-0 transition-opacity duration-1000 ease-in-out">
-                <h2 class="text-3xl md:text-4xl font-bold text-purple-heart mb-4 flex items-center justify-center gap-3">
-                    Para o meu <span class="text-rose-love text-4xl">único e verdadeiro amor</span>...
+            <div id="secret-message"
+                class="flex flex-col hidden space-y-6 opacity-0 transition-opacity duration-1000 ease-in-out">
+                <h2
+                    class="text-3xl md:text-4xl font-bold text-purple-heart mb-4 flex items-center justify-center gap-3">
+                    Para a minha <span class="text-rose-love text-4xl">Ana Flávia</span>...
                 </h2>
                 <p class="text-lg md:text-xl text-gray-800 leading-relaxed italic">
-                    "Desde o momento em que te conheci, meu mundo se transformou.
-                    Cada dia ao seu lado é um presente, e seu sorriso ilumina minha vida.
-                    Você é a pessoa mais incrível que já conheci,
-                    e sou grato(a) por cada momento que passamos juntos.
-                    Com todo o meu amor, hoje e sempre!"
+                    "E pensar que tudo começou naquele amigo oculto, e que antes a gente nem se falava...
+                    Porém, tudo mudou depois que a gente começou a se falar. Comecei a gostar muito de você e comecei a
+                    te ver como minha futura mulher. Apesar do que aconteceu ano passado, eu queria começar algo sério
+                    com você, e cá estamos, namorando de novo! Rsrsrs."
                 </p>
+                <audio class="mx-auto" src="mscpreferidadela.mp3" controls autoplay>
+                </audio>
+                Musica com um nome dificil demais hein
                 <div class="text-2xl font-semibold text-red-passion mt-6">
                     Com carinho, <br>
-                    Seu(Sua) Namorado(a)
+                    Seu Namorado Miguel
                 </div>
                 <div class="flex justify-center gap-4 mt-6">
                     <span class="text-5xl animate-bounce">💖</span>
@@ -176,11 +211,11 @@
             // Variáveis para controlar a "teimosia" do botão "Não"
             let noAttempts = 0;
             const noMessages = [
-                "Ops! Essa não é a resposta certa...",
-                "Tente novamente! 😉",
-                "Essa é fácil... pense bem! ❤️",
-                "Não desista agora! 😇",
-                "A resposta certa está esperando! ✨"
+                "Ops! Acho que tu errou ai...",
+                "Tenta denovo! 😉",
+                "Naoooo, pfvvv! ❤️",
+                "Vou te obrigar! 😇",
+                "Clica no sim po ✨"
             ];
 
             // Event listener para o botão "Clique Aqui!" (revela a pergunta)
@@ -247,7 +282,7 @@
                     noButton.classList.add('bg-gray-400', 'hover:bg-gray-500');
                 } else {
                     // Após muitas tentativas, o botão "Não" fica ainda mais insistente
-                    noButton.textContent = "Sério? Ainda não?";
+                    noButton.textContent = "CLICA NO SIM";
                     noButton.classList.add('animate-pulse'); // Adiciona um efeito de pulso
                 }
             });
